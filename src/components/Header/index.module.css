@@ -6,7 +6,9 @@
     color: #707070;
     align-items: center;
     gap: 10em;
+    background-color: black;
     justify-content: space-evenly;
+    /* position: fixed; */
 }
 
 .logo {
@@ -29,14 +31,16 @@
     gap: 7em;
 }
 
-.navegation li {
+.navegation li a {
+    color: #707070;
     font-family: var(--font-axiforma-Bold);
     font-size: 1em;
     cursor: pointer;
+    text-decoration: none;
 }
 
 
-.navegation li.selecionado {
+.navegation li.selecionado a {
     color: #ffff;
 }
 
