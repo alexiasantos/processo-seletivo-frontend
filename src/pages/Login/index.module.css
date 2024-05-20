@@ -1,0 +1,113 @@
+.main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+@keyframes form_animation {
+    0% {
+        margin-left: 25em;
+        margin-top: 12em;
+
+    }
+
+    75% {
+        margin-left: 7em;
+        margin-top: 12em;
+    }
+
+    100% {
+        margin-top: 5em;
+        margin-left: 7em;
+    }
+}
+
+
+.left_container {
+    width: 100%;
+    height: 100vh;
+    z-index: 2;
+    background: linear-gradient(-0.26turn, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.963), rgba(0, 0, 0, 0.942));
+}
+
+.login_form {
+    display: flex;
+    justify-content: left;
+    margin-left: 7em;
+    align-items: center;
+    flex-direction: column;
+    width: 250px;
+    animation-name: form_animation;
+    animation-duration: 8s;
+    animation-fill-mode: forwards;
+}
+
+.logo_text {
+    font-family: var(--font-marvel);
+    color: #ffffff;
+    font-size: 55px;
+    margin-top: 0.2em;
+    background-color: #FF0000;
+    width: 3.5em;
+
+
+}
+
+@keyframes activation_image {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.image_login {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 57%;
+    height: 28.5em;
+    background-color: rgb(0, 0, 0);
+    z-index: 0;
+    animation-name: activation_image;
+    animation-duration: 10s;
+}
+
+.avengers_image {
+    position: fixed;
+    top: -0.5em;
+    height: 29.9em;
+    right: -118px;
+    width: 65%;
+    z-index: 1;
+}
+
+@media screen and (max-width: 798px) {
+    .main {
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+
+    .container_logo {
+        border-radius: 10px;
+    }
+
+    .image_login {
+        width: 100%;
+        height: auto;
+    }
+
+    .avengers_image {
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+    }
+}

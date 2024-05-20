@@ -1,5 +1,34 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+@font-face {
+  font-family: 'Marvel';
+  src: url('./assets/fonts/MarvelRegular-Dj83.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Axiforma-Light';
+  src: url('./assets/fonts/Kastelov - Axiforma Light.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Axiforma-Bold';
+  src: url('./assets/fonts/Kastelov - Axiforma Bold.otf') format('opentype');
+}
+
+
+:root {
+  --font-marvel: Marvel;
+  --font-axiforma-light: Axiforma-Light;
+  --font-axiforma-Bold: Axiforma-Bold
+}
+
+
 body {
   margin: 0;
+  background-color: black;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
