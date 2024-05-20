@@ -1,5 +1,54 @@
 .header {
     width: 100%;
-    height: 45px;
-    background-color: blanchedalmond;
+    height: 70px;
+    border-bottom: 1px solid #FF0000;
+    display: flex;
+    color: #707070;
+    align-items: center;
+    gap: 10em;
+    justify-content: space-evenly;
+}
+
+.logo {
+    background-color: #FF0000;
+    color: white;
+    font-family: var(--font-marvel);
+    font-size: 2.4em;
+    width: 100px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
+}
+
+.navegation {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    gap: 7em;
+}
+
+.navegation li {
+    font-family: var(--font-axiforma-Bold);
+    font-size: 1em;
+    cursor: pointer;
+}
+
+
+.navegation li.selecionado {
+    color: #ffff;
+}
+
+.navegation .profile {
+    font-family: var(--font-axiforma-Light);
+    display: flex;
+    justify-content: center;
+    font-size: 1em;
+    align-items: center;
+}
+
+.navegation .profile img {
+    width: 55px;
+    height: 50px;
 }
