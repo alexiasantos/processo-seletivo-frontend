@@ -3,6 +3,7 @@ import styles from './index.module.css';
 import DetailCard from '../DetailCard';
 
 interface MyComponentProps {
+    id: number;
     image: string;
     description: string;
     title: string;
@@ -11,10 +12,9 @@ interface MyComponentProps {
     critics: number;
     appearances?: string;
     isFirstElement: boolean;
-    isLastElement: boolean;
 }
 
-const SummaryCard: React.FC<MyComponentProps> = ({ image, description, title, subtitle, platforms, critics, appearances, isFirstElement, isLastElement }) => {
+const SummaryCard: React.FC<MyComponentProps> = ({ id, image, description, title, subtitle, platforms, critics, appearances, isFirstElement }) => {
     const [showDetail, setShowDetail] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
 
@@ -36,6 +36,7 @@ const SummaryCard: React.FC<MyComponentProps> = ({ image, description, title, su
             </div>
             {showDetail && (
                 <DetailCard
+                    id={id}
                     image={image}
                     description={description}
                     title={title}
@@ -46,7 +47,8 @@ const SummaryCard: React.FC<MyComponentProps> = ({ image, description, title, su
                     onClose={handleCloseDetail}
                     cardRef={cardRef}
                     isFirstElement={isFirstElement}
-                    isLastElement={isLastElement}
+                    open={showDetail}
+                    setOpen={setShowDetail}
                 />
             )}
         </div>

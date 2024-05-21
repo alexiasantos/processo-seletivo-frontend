@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import SummaryCard from '../SummaryCard';
+import SummaryCard from '../SummaryCard/index';
 import styles from './index.module.css';
 
 interface Card {
+    id: number;
     image: string;
     title: string;
     description: string;
@@ -36,6 +37,7 @@ const Carousel: React.FC<CarouselProps> = ({ cards }) => {
                     {cards.map((card, index) => (
                         <motion.div key={index} className={styles.item}>
                             <SummaryCard
+                                id={card.id}
                                 image={card.image}
                                 title={card.title}
                                 description={card.description}
@@ -44,7 +46,6 @@ const Carousel: React.FC<CarouselProps> = ({ cards }) => {
                                 critics={card.critics}
                                 appearances={card.appearances}
                                 isFirstElement={index === 0}
-                                isLastElement={index === numCards - 1}
                             />
                         </motion.div>
                     ))}

@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 interface DetailCardProps {
+    id: number;
     image: string;
     description: string;
     title: string;
@@ -14,20 +15,29 @@ interface DetailCardProps {
     onClose: () => void;
     cardRef: React.RefObject<HTMLDivElement>;
     isFirstElement: boolean;
-    isLastElement: boolean;
+    open: boolean;
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+
 }
 
-const DetailCard: React.FC<DetailCardProps> = ({ image, description, title, subtitle, platforms, critics, appearances, onClose, cardRef, isFirstElement, isLastElement }) => {
+const DetailCard: React.FC<DetailCardProps> = ({ image, description, title, subtitle, platforms, critics, appearances, onClose, cardRef, isFirstElement, open, setOpen }) => {
     const [top, setTop] = useState(0);
     const [left, setLeft] = useState(0);
 
     useEffect(() => {
         if (cardRef.current) {
             const cardRect = cardRef.current.getBoundingClientRect();
-            setTop(cardRect.top - 290); // Adjust the offset as needed
+            setTop(cardRect.top - 290);
             setLeft(cardRect.left);
         }
     }, [cardRef]);
+
+    const handleClose = () => {
+        setOpen(false);
+        onClose();
+    };
+
+    if (!open) return null;
 
     return (
         <div className={`${styles.detailCard} ${isFirstElement ? styles.firstElement : ''}`} style={{ top: `${top}px`, left: `${left}px` }}>
@@ -59,7 +69,7 @@ const DetailCard: React.FC<DetailCardProps> = ({ image, description, title, subt
                         />
                     ))}
                 </div>
-                <button className={styles.closeButton} onClick={onClose}></button>
+                <button className={styles.closeButton} onClick={handleClose}></button>
             </div>
         </div>
     );
