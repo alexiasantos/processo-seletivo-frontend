@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './index.module.css';
-import avengersImage from '../../assets/img/ativo-19.png';
 import LoginForm from '../../components/LoginForm';
 const Login: React.FC = () => {
     return (
@@ -13,7 +12,6 @@ const Login: React.FC = () => {
                     </div>
                 </div>
                 <div className={styles.image_login}>
-                    <img className={styles.avengers_image} src={avengersImage} />
                 </div>
             </main>
         </>

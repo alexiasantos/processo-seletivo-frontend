@@ -1,56 +1,35 @@
-import React, { useState } from 'react';
-import styles from './index.module.css';
+import React from 'react';
 import Header from '../../components/Header/index';
-import CharacterSummaryCard from '../../components/CharacterSummaryCard';
-import spider from '../../assets/img/spider.png';
-import Thanos from '../../assets/img/Thanos.png';
-import wanda from '../../assets/img/wanda.png';
-import hulk from '../../assets/img/ativo-11.png';
-import { motion } from 'framer-motion';
+import Carousel from '../../components/Carousel';
+import homem_de_ferro from '../../assets/img/homem-de-ferro.png';
+import Thor from '../../assets/img/Thor_Official_Poster.png';
+import homem_de_ferro_2 from '../../assets/img/HOMEM-DE-FERRO-2.png';
+import capitao from '../../assets/img/unnamed.png';
+import capita_marvel from '../../assets/img/capita-marvel.png';
+import plataform_disney from '../../assets/img/logo-grande.png'
 
+interface Card {
+    image: string;
+    description: string;
+    title: string;
+    subtitle?: string;
+    critics: number;
+    appearances?: string;
+    platforms?: string[];
+}
 const Filmes: React.FC = () => {
-    const cardsCharacter = [
-        { image: spider, title: 'Homem-Aranha', description: "Após ser mordido por uma aranha radioativa, Peter Parker se torna o amigo da vizinhança, o Homem-Aranha." },
-        { image: wanda, title: 'Wanda Maximoff', description: "Wanda Maximoff foi sequestrada da Sérvia e trazida para a Montanha Wundagore, base do Alto Evolucionário. Durante anos, ela e seu irmão gêmeo, Pietro, acreditavam que eram filhos de um casal de ciganos." },
-        { image: Thanos, title: 'Thanos', description: "A lua Titã era governada por Mentor (A'Lars), quando então reinava paz e tecnologia. Mentor tinha dois filhos: Eros e Thanos.  Ao contrário do irmão, Thanos, era bem mais poderoso e almejava ainda mais." },
-        { image: hulk, title: 'Hulk', description: "Na história original dos quadrinhos, o Hulk é um selvagem e poderoso alter ego do Dr. Robert Bruce Banner, um cientista que foi atingido por raios gama enquanto salvava um adolescente durante o teste militar." }
+    const cards: Card[] = [
+        { image: homem_de_ferro, title: 'Homem de Ferro', description: "Tony Stark (Robert Downey Jr.) é um industrial bilionário, que também é um brilhante inventor, ao ser sequestrado, ele é obrigado a construir uma arma devastadora, mas ao invés disso, cria uma armadura capaz de mudar a história.", subtitle: "Playboy Filantropo", critics: 5, platforms: [plataform_disney] },
+        { image: homem_de_ferro_2, title: 'Homem de Ferro 2', description: "O mundo já sabe que o inventor bilionário Tony Stark (Robert Downey Jr.) é o super-herói blindado Homem de Ferro. Sofrendo pressão do governo, da mídia e do público para compartilhar sua tecnologia com as forças armadas.", subtitle: "Playboy Filantropo", critics: 5, platforms: [plataform_disney] },
+        { image: Thor, title: 'Thor', description: "Quando é banido do reino de Asgard e exilado na Terra, o arrogante guerreiro Thor (Chris Hemsworth) é obrigado a lutar para reaver seus poderes perdidos. ", subtitle: "O Melhor Vingador", critics: 3 },
+        { image: capitao, title: 'Capitão América', description: "Em Capitão América: O Primeiro Vingador, conhecemos a história de Steve Rogers (Chris Evans) e como ele se tornou o melhor soldado do mundo. ", subtitle: "Primeiro Vingador", platforms: [plataform_disney], critics: 4 },
+        { image: capita_marvel, title: 'Capitã Marvel', description: "Capitã Marvel, parte do exército de elite dos Kree, uma raça alienígena, encontra-se no meio de uma batalha entre seu povo e os Skrulls. ", critics: 4, platforms: [plataform_disney] }
     ];
-    const [currentIndex, setCurrentIndex] = useState(0);
 
-    const nextSlide = () => {
-        setCurrentIndex(prevIndex => (prevIndex + 1) % cardsCharacter.length);
-    };
-
-    const prevSlide = () => {
-        setCurrentIndex(prevIndex => (prevIndex - 1 + cardsCharacter.length) % cardsCharacter.length);
-    };
-
-    // const transformValue = `translateX(-${currentIndex * 800}px)`;
     return (
         <>
             <Header />
-            <main className={styles.main}>
-                <motion.div className={styles.card_carousel}>
-                    <motion.div className={styles.inner} style={{ transform: `translateX(-${currentIndex * 262}px)` }} >
-                        {cardsCharacter.map((card, index) => (
-                            <motion.div
-                                key={index}
-                                className={styles.item}
-                            >
-                                <CharacterSummaryCard
-                                    image={card.image}
-                                    title={card.title}
-                                    description={card.description}
-                                />
-                            </motion.div>
-                        ))}
-                    </motion.div>
-
-                </motion.div>
-                <button className={styles.prevBtn} onClick={prevSlide} disabled={currentIndex === 0}>&#10094;</button>
-                <button className={styles.nextBtn} onClick={nextSlide} disabled={currentIndex === cardsCharacter.length - 1}>&#10095;</button>
-
-            </main >
+            <Carousel cards={cards} />
         </>
     );
 };
