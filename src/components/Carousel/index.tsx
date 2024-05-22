@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import SummaryCard from '../SummaryCard/index';
 import styles from './index.module.css';
@@ -20,7 +20,23 @@ interface CarouselProps {
 
 const Carousel: React.FC<CarouselProps> = ({ cards }) => {
     const [currentIndex, setCurrentIndex] = useState<number>(0);
+    const [lastVisibleIndex, setLastVisibleIndex] = useState<number>(0);
     const numCards = cards.length;
+
+    useEffect(() => {
+        const calculateLastVisibleIndex = () => {
+            const visibleCardsCount = Math.floor(window.innerWidth / 262);
+            const lastIndex = Math.min(currentIndex + visibleCardsCount - 1, numCards - 1);
+            setLastVisibleIndex(lastIndex);
+        };
+
+        calculateLastVisibleIndex();
+        window.addEventListener('resize', calculateLastVisibleIndex);
+
+        return () => {
+            window.removeEventListener('resize', calculateLastVisibleIndex);
+        };
+    }, [currentIndex, numCards]);
 
     const nextSlide = () => {
         setCurrentIndex(prevIndex => (prevIndex + 1) % numCards);
@@ -46,6 +62,7 @@ const Carousel: React.FC<CarouselProps> = ({ cards }) => {
                                 critics={card.critics}
                                 appearances={card.appearances}
                                 isFirstElement={index === 0}
+                                isLastVisible={index === lastVisibleIndex}
                             />
                         </motion.div>
                     ))}

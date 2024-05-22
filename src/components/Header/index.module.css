@@ -15,13 +15,13 @@
     background-color: #FF0000;
     color: white;
     font-family: var(--font-marvel);
-    font-size: 2.4em;
+    font-size: 2em;
     width: 100px;
     padding: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 36px;
+    height: 25px;
 }
 
 .navegation {

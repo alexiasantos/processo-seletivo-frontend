@@ -1,28 +1,17 @@
 .detailCard {
-    width: 400px;
+    width: 210px;
     height: 290px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-radius: 20px;
-    background-image: linear-gradient(to bottom, #FF0000, #ff000064);
+    background-image: linear-gradient(to bottom, #FF0000, #ff0000dc);
     position: relative;
-    z-index: 1000;
+    z-index: 3;
 }
 
-.detailCard:last-child {
-    flex-direction: row-reverse;
-}
-
-.image_card {
-    width: 200px;
-    height: 290px;
-    z-index: 2;
-    order: 2;
-}
-
-.detailCard.lastElement .image_card {
-    order: 1;
+.selected {
+    z-index: 4;
 }
 
 .content {
@@ -32,7 +21,7 @@
     display: flex;
     gap: 10px;
     justify-content: center;
-    align-items: end;
+    align-items: start;
     flex-direction: column;
     height: 250px;
     z-index: 2;
@@ -40,9 +29,6 @@
     order: 1;
 }
 
-.detailCard.lastElement .content {
-    order: 2;
-}
 
 .title,
 .critics {
@@ -61,7 +47,8 @@
 }
 
 .appearances {
-    width: 100%;
+    width: 100px;
+    height: 90px;
     text-align: left;
     font-size: 8px;
     color: #fff;
@@ -84,8 +71,8 @@
 }
 
 .platforms img {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
 }
 
 .critics_label {
@@ -141,4 +128,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.adjustLeft {
+    transform: translateX(-190%);
 }
