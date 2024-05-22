@@ -1,0 +1,57 @@
+.main {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.inner {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    transition: transform 0.5s ease;
+}
+
+
+.item {
+    min-height: 225px;
+    min-width: 200px;
+    padding: 2em;
+    flex-shrink: 0;
+}
+
+.active {
+    transform: translateX(0);
+}
+
+.card_carousel {
+    position: relative;
+}
+
+.prevBtn,
+.nextBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    z-index: 1;
+}
+
+.prevBtn {
+    color: #FF0000;
+    font-size: 35px;
+    left: 40px;
+}
+
+.nextBtn {
+    font-size: 35px;
+    color: #FF0000;
+    right: 40px;
+}
