@@ -10,24 +10,17 @@ interface DetailCardProps {
     platforms?: string[];
     critics: number;
     appearances?: string;
-    onClose: () => void;
     isFirstElement: boolean;
     open: boolean;
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
     isLastVisible: boolean;
 }
 
-const DetailCard: React.FC<DetailCardProps> = ({ description, title, subtitle, platforms, critics, appearances, onClose, isFirstElement, open, setOpen, isLastVisible }) => {
-    const handleClose = () => {
-        setOpen(false);
-        onClose();
-    };
-
+const DetailCard: React.FC<DetailCardProps> = ({ description, title, subtitle, platforms, critics, appearances, isFirstElement, open, isLastVisible }) => {
     if (!open) return null;
 
     return (
         <div className={`${styles.detailCard} ${isFirstElement ? styles.firstElement : ''} ${isLastVisible ? styles.adjustLeft : ''}`}>
-            <div className={styles.content}>
+            <div className={`${styles.content} ${isLastVisible ? styles.adjust_content : ''}`}>
                 <div className={styles.header_title}>
                     <h1 className={styles.title}>{subtitle ? `${title}: ${subtitle}` : title}</h1>
                 </div>
@@ -36,15 +29,14 @@ const DetailCard: React.FC<DetailCardProps> = ({ description, title, subtitle, p
                 ) : (
                     <p className={styles.description_card}>{description}</p>
                 )}
-                <label className={styles.label_streaming}>Disponível em streaming</label>
                 {platforms && (
                     <div className={styles.platforms}>
+                        <label className={styles.label_streaming}>Disponível em streaming:</label>
                         {platforms.map((platform, index) => (
                             <img key={index} src={platform} alt={`Platform ${index}`} className={styles.platformImage} />
                         ))}
                     </div>
-                )}
-                <label className={styles.critics_label}>Crítica</label>
+                )}{appearances ? (<label className={styles.critics_label}>Avaliação dos fãs</label>) : (<label className={styles.critics_label}>Crítica</label>)}
                 <div className={styles.critics}>
                     {Array.from({ length: 5 }, (_, index) => (
                         <FontAwesomeIcon
@@ -54,7 +46,6 @@ const DetailCard: React.FC<DetailCardProps> = ({ description, title, subtitle, p
                         />
                     ))}
                 </div>
-                <button className={styles.closeButton} onClick={handleClose}></button>
             </div>
         </div>
     );

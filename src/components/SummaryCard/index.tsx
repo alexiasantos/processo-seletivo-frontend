@@ -41,20 +41,21 @@ const SummaryCard: React.FC<MyComponentProps> = ({ id, image, description, title
                 </div>
             )}
             {showDetail && (
-                <DetailCard
-                    id={id}
-                    description={description}
-                    title={title}
-                    subtitle={subtitle}
-                    platforms={platforms}
-                    critics={critics}
-                    appearances={appearances}
-                    onClose={handleCloseDetail}
-                    isFirstElement={isFirstElement}
-                    open={showDetail}
-                    setOpen={setShowDetail}
-                    isLastVisible={isLastVisible}
-                />
+                <>
+                    <DetailCard
+                        id={id}
+                        description={description}
+                        title={title}
+                        subtitle={subtitle}
+                        platforms={platforms}
+                        critics={critics}
+                        appearances={appearances}
+                        isFirstElement={isFirstElement}
+                        open={showDetail}
+                        isLastVisible={isLastVisible}
+                    />
+                    <button className={`${styles.closeButton} ${isLastVisible ? styles.modifyButton : ''}`} onClick={handleCloseDetail}></button>
+                </>
             )}
         </div>
     );
